@@ -305,7 +305,6 @@ public class LootChancePanel extends PluginPanel
             {
                 if (is == null)
                 {
-                    System.err.println("⚠ loot_sources.json not found in resources.");
                     return List.of("Barrows", "Kraken", "Vorkath"); // fallback
                 }
 
