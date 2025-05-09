@@ -116,7 +116,7 @@ public class LootChancePanel extends PluginPanel
                 "<li>Enter the Base Chance (e.g. 1/128)</li>" +
                 "<li>Enter the Table Chance (or use 1/1 if not applicable)</li>" +
                 "<li>Enter the number of kills / loot attempts</li>" +
-                "<li>The output shows the true base chance and your cumulative chance of at least one successful drop</li>" +
+                "<li>The output shows the calculated base chance and your cumulative chance of at least one successful drop</li>" +
                 "</ul></html>");
         calcSteps.setAlignmentX(Component.LEFT_ALIGNMENT);
         calculatorPanel.add(calcSteps);
@@ -575,7 +575,7 @@ public class LootChancePanel extends PluginPanel
                                                     "<html><span style='color:#CCCCCC;'>Base: %s | Table: %s</span></html>", baseStr, tableStr
                                             ));
                                             oddsLine2.setText(String.format(
-                                                    "<html><span style='color:#FFFFFF;font-weight:bold;'>True Base: %s</span></html>", trueStr
+                                                    "<html><span style='color:#FFFFFF;font-weight:bold;'>Calc. Base: %s</span></html>", trueStr
                                             ));
                                         }
                                         else {
@@ -583,7 +583,7 @@ public class LootChancePanel extends PluginPanel
                                                     "<html><span style='color:#CCCCCC;'>Base: %s | Table: %s</span></html>", base, table
                                             ));
                                             oddsLine2.setText(String.format(
-                                                    "<html><span style='color:#FFFFFF;font-weight:bold;'>True Base: %s</span></html>", trueC
+                                                    "<html><span style='color:#FFFFFF;font-weight:bold;'>Calc. Base: %s</span></html>", trueC
                                             ));
                                         }
                                     } catch (Exception ignored) {}
@@ -598,7 +598,7 @@ public class LootChancePanel extends PluginPanel
                                         else if (percentString.endsWith("0")) percentString = percentString.substring(0, percentString.length() - 1);
 
                                         nextChanceLabel.setText(String.format(
-                                                "<html><span style='color:#00FF00;'>Next Chance: %s%%</span></html>",
+                                                "<html><span style='color:#00FF00;'>Est. Probability: %s%%</span></html>",
                                                 percentString
                                         ));
                                     }
@@ -610,7 +610,7 @@ public class LootChancePanel extends PluginPanel
                                         else if (fracString.endsWith("0")) fracString = fracString.substring(0, fracString.length() - 1);
 
                                         nextChanceLabel.setText(String.format(
-                                                "<html><span style='color:#00FF00;'>Next Chance: 1/%s</span></html>",
+                                                "<html><span style='color:#00FF00;'>Est. Probability: 1/%s</span></html>",
                                                 fracString
                                         ));
                                     }
@@ -871,8 +871,8 @@ public class LootChancePanel extends PluginPanel
 
             resultLabel.setText(String.format(
                     "<html><div style='font-size:13px;'>"
-                            + "True Base: (Base * Table)<br><b>%s%%</b> or <b>1/%s</b><br><br>"
-                            + "Next Chance:<br><b>%s%%</b> or <b>1/%s</b>"
+                            + "Calc. Base: (Base * Table)<br><b>%s%%</b> or <b>1/%s</b><br><br>"
+                            + "Estimated Probability:<br><b>%s%%</b> or <b>1/%s</b>"
                             + "</div></html>",
                     trueBaseStr, trueBaseFrac,
                     chanceStr, chanceFrac
